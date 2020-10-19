@@ -1,0 +1,10 @@
+services:
+
+    EightMarq\UserBundle\Repository\UserRepository:
+        autowire: true
+        autoconfigure: true
+
+    EightMarq\UserBundle\Security\PasswordUpdater:
+        autowire: true
+
+    EightMarq\UserBundle\Security\PasswordUpdaterInterface: '@EightMarq\UserBundle\Security\PasswordUpdater'

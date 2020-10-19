@@ -1,0 +1,30 @@
+{
+    "name": "eightmarq/user-bundle",
+    "description": "EightMarq user bundle",
+    "type": "symfony-bundle",
+    "minimum-stability": "dev",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Norbert Schvoy",
+            "email": "norbert.schvoy@eightmarq.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "EightMarq\\UserBundle\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": { "EightMarq\\UserBundle\\Tests\\": "tests/" }
+    },
+    "require": {
+        "php": "^7.4",
+        "symfony/framework-bundle": "^5.0",
+        "symfony/orm-pack": "*",
+        "eightmarq/core-bundle": "dev-master"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^6.2"
+    }
+}

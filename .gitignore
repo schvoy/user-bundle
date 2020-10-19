@@ -1,0 +1,4 @@
+# Vendor files
+/.idea
+/vendor
+composer.lock
