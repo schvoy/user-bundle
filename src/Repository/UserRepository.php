@@ -21,22 +21,22 @@ use EightMarq\UserBundle\Entity\User;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\User\PasswordUpgraderInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
-use function get_class;
 
 /**
- * @method User|null find($id, $lockMode = null, $lockVersion = null)
- * @method User|null findOneBy(array $criteria, array $orderBy = null)
- * @method User[]    findAll()
- * @method User[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method UserInterface|null find($id, $lockMode = null, $lockVersion = null)
+ * @method UserInterface|null findOneBy(array $criteria, array $orderBy = null)
+ * @method UserInterface[]    findAll()
+ * @method UserInterface[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class UserRepository extends ServiceEntityRepository implements PasswordUpgraderInterface
+abstract class UserRepository extends ServiceEntityRepository implements PasswordUpgraderInterface
 {
     /**
      * @param ManagerRegistry $registry
+     * @param string $entityClass
      */
-    public function __construct(ManagerRegistry $registry)
+    public function __construct(ManagerRegistry $registry, string $entityClass = User::class)
     {
-        parent::__construct($registry, User::class);
+        parent::__construct($registry, $entityClass);
     }
 
     /**
@@ -50,7 +50,7 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
      */
     public function upgradePassword(UserInterface $user, string $newEncodedPassword): void
     {
-        if (!$user instanceof User) {
+        if (!$user instanceof UserInterface) {
             throw new UnsupportedUserException(sprintf('Instances of "%s" are not supported.', get_class($user)));
         }
 

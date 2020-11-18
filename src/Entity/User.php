@@ -15,12 +15,10 @@ namespace EightMarq\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use EightMarq\CoreBundle\Entity\BaseEntity;
-use EightMarq\UserBundle\Repository\UserRepository;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
- * @ORM\Entity(repositoryClass=UserRepository::class)
- * @ORM\Table(name="users")
+ * @ORM\MappedSuperclass()
  */
 class User extends BaseEntity implements UserInterface
 {
