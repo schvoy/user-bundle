@@ -4,7 +4,7 @@
 
 ## Requirements
 
-> Important! PHP 7.4 is required for this bundle, because in this bundle we use typed properties feature!
+> Important! PHP 8 is required for this bundle, because in this bundle we use typed properties feature!
 
 ## Installation
 
