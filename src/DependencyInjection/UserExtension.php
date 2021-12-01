@@ -21,12 +21,6 @@ use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 
 class UserExtension extends AbstractExtension
 {
-    /**
-     * @param array $configs
-     * @param ContainerBuilder $container
-     *
-     * @throws Exception
-     */
     public function load(array $configs, ContainerBuilder $container): void
     {
         $loader = new YamlFileLoader(

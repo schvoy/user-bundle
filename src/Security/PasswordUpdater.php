@@ -18,23 +18,13 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 class PasswordUpdater implements PasswordUpdaterInterface
 {
-    /**
-     * @var EncoderFactoryInterface
-     */
     protected EncoderFactoryInterface $encoderFactory;
 
-    /**
-     * @param EncoderFactoryInterface $encoderFactory
-     */
     public function __construct(EncoderFactoryInterface $encoderFactory)
     {
         $this->encoderFactory = $encoderFactory;
     }
 
-    /**
-     * @param UserInterface $user
-     * @param string $plainPassword
-     */
     public function hashPassword(UserInterface $user, string $plainPassword): void
     {
         if (strlen($plainPassword) === 0) {

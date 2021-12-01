@@ -13,55 +13,33 @@ declare(strict_types=1);
 
 namespace EightMarq\UserBundle\Entity;
 
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use EightMarq\CoreBundle\Entity\BaseEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 
-/**
- * @ORM\MappedSuperclass()
- */
+#[ORM\MappedSuperclass]
 class User extends BaseEntity implements UserInterface
 {
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=180, unique=true)
-     */
+    #[ORM\Column(type: Types::STRING, length: 180, unique: true)]
     protected string $email;
 
-    /**
-     * @var array
-     *
-     * @ORM\Column(type="json")
-     */
+    #[ORM\Column(type: Types::JSON)]
     protected array $roles = [];
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string")
-     */
+    #[ORM\Column(type: Types::STRING)]
     protected string $password;
 
-    /**
-     * @return string
-     */
     public function __toString()
     {
         return $this->getEmail();
     }
 
-    /**
-     * @return string
-     */
     public function getEmail(): string
     {
         return $this->email;
     }
 
-    /**
-     * @param string $email
-     */
     public function setEmail(string $email): void
     {
         $this->email = $email;
@@ -90,9 +68,6 @@ class User extends BaseEntity implements UserInterface
         return array_unique($roles);
     }
 
-    /**
-     * @param array $roles
-     */
     public function setRoles(array $roles): void
     {
         $this->roles = $roles;
@@ -106,9 +81,6 @@ class User extends BaseEntity implements UserInterface
         return (string)$this->password;
     }
 
-    /**
-     * @param string $password
-     */
     public function setPassword(string $password): void
     {
         $this->password = $password;

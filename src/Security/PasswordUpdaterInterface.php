@@ -17,11 +17,5 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 interface PasswordUpdaterInterface
 {
-    /**
-     * @param UserInterface $user
-     * @param string $plainPassword
-     *
-     * @return void
-     */
     public function hashPassword(UserInterface $user, string $plainPassword): void;
 }
