@@ -13,16 +13,18 @@ declare(strict_types=1);
 
 namespace EightMarq\UserBundle\Security;
 
-use Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 class PasswordUpdater implements PasswordUpdaterInterface
 {
-    protected EncoderFactoryInterface $encoderFactory;
+    protected UserPasswordHasherInterface $userPasswordHasher;
 
-    public function __construct(EncoderFactoryInterface $encoderFactory)
+    public function __construct(UserPasswordHasherInterface $userPasswordHasher)
     {
-        $this->encoderFactory = $encoderFactory;
+        $this->userPasswordHasher = $userPasswordHasher;
     }
 
     public function hashPassword(UserInterface $user, string $plainPassword): void
@@ -31,8 +33,11 @@ class PasswordUpdater implements PasswordUpdaterInterface
             return;
         }
 
-        $encoder = $this->encoderFactory->getEncoder($user);
-        $password = $encoder->encodePassword($plainPassword, null);
+        if (!$user instanceof PasswordAuthenticatedUserInterface) {
+            throw new UnsupportedUserException(sprintf('Instances of "%s" are not supported.', get_class($user)));
+        }
+
+        $password = $this->userPasswordHasher->hashPassword($user, $plainPassword);
 
         $user->setPassword($password);
         $user->eraseCredentials();

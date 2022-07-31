@@ -64,7 +64,7 @@ class User extends BaseUser
 
 ```yaml
 security:
-    encoders:
+    password_hashers:
         App\Entity\User:
             algorithm: argon2i
 

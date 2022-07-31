@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.8.2
+
+* Fix PasswordUpdater
+* Update README.md
+
 ## 0.8.1
 
 * Fix UserRepository::upgradePassword 
