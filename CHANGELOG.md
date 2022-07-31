@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.8.1
+
+* Fix UserRepository::upgradePassword 
+* Add PasswordAuthenticatedUserInterface to User entity
+
 ## 0.8.0
 
 * Update required php version to 8.1

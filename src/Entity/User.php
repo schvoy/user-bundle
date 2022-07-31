@@ -16,10 +16,11 @@ namespace EightMarq\UserBundle\Entity;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use EightMarq\CoreBundle\Entity\BaseEntity;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\MappedSuperclass]
-class User extends BaseEntity implements UserInterface
+class User extends BaseEntity implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Column(type: Types::STRING, length: 180, unique: true)]
     protected string $email;
@@ -100,5 +101,13 @@ class User extends BaseEntity implements UserInterface
     public function eraseCredentials()
     {
 
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function getUserIdentifier(): string
+    {
+        return $this->email;
     }
 }
