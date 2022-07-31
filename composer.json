@@ -19,8 +19,8 @@
         "psr-4": { "EightMarq\\UserBundle\\Tests\\": "tests/" }
     },
     "require": {
-        "php": "^8.0",
-        "symfony/framework-bundle": "^5.3",
+        "php": "^8.1",
+        "symfony/framework-bundle": "^6.1",
         "symfony/orm-pack": "*",
         "eightmarq/core-bundle": "dev-master"
     },
