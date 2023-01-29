@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.8.3
+
+* Change composer.json requirements
+
 ## 0.8.2
 
 * Fix PasswordUpdater
