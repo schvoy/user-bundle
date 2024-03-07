@@ -1,10 +1,8 @@
 # EightMarq - User bundle
 
-[WIP] User bundle 
-
-## Requirements
-
-> Important! PHP 8.1 is required for this bundle, because in this bundle we use typed properties feature!
+This bundle provides a basic user entity and user repository,
+that can be used immediately without so much effort, just a few small steps needed to use it.
+However, these are extendable and you can add additional properties easily.
 
 ## Installation
 
@@ -50,10 +48,8 @@ use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
 use EightMarq\UserBundle\Entity\User as BaseUser;
 
-/**
- * @ORM\Entity(repositoryClass=UserRepository::class)
- * @ORM\Table(name="users")
- */
+#[ORM\Entity(repositoryClass: UserRepository::class)]
+#[ORM\Table(name: 'users')]
 class User extends BaseUser
 {
    
@@ -74,6 +70,22 @@ security:
                 class: App\Entity\User
                 property: email
     [...]
+```
+
+## Event subscriber
+
+The `EightMarq\UserBundle\EventSubscriber\PasswordHashingDoctrineEventSubscriber` automatically hashes the plain password, when during a new user entity creation.
+
+In some cases, you don't need this behavior, so you can disable it with the following code:
+
+```php
+    PasswordHashingDoctrineEventSubscriber::setEnabled(false);
+```
+
+And after that you can re-enable it: 
+
+```php
+    PasswordHashingDoctrineEventSubscriber::setEnabled(true);
 ```
 
 ## Configuration reference

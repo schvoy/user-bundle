@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.9.0
+
+* Change composer.json requirements
+* Add new `EightMarq\UserBundle\EventSubscriber\PasswordHashingDoctrineEventSubscriber`
+* Remove unnecessary type cast from User entity
+
 ## 0.8.3
 
 * Change composer.json requirements

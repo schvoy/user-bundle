@@ -8,3 +8,6 @@ services:
         autowire: true
 
     EightMarq\UserBundle\Security\PasswordUpdaterInterface: '@EightMarq\UserBundle\Security\PasswordUpdater'
+
+    EightMarq\UserBundle\EventSubscriber\PasswordHashingDoctrineEventSubscriber:
+        tags: [ 'doctrine.event_subscriber' ]

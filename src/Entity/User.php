@@ -53,7 +53,7 @@ class User extends BaseEntity implements UserInterface, PasswordAuthenticatedUse
      */
     public function getUsername(): string
     {
-        return (string)$this->email;
+        return $this->email;
     }
 
     /**
@@ -79,7 +79,7 @@ class User extends BaseEntity implements UserInterface, PasswordAuthenticatedUse
      */
     public function getPassword(): string
     {
-        return (string)$this->password;
+        return $this->password;
     }
 
     public function setPassword(string $password): void
