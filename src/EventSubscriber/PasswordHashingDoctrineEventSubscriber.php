@@ -2,15 +2,18 @@
 
 declare(strict_types=1);
 
-namespace EightMarq\UserBundle\EventSubscriber;
+namespace Schvoy\UserBundle\EventSubscriber;
 
-use Doctrine\Common\EventSubscriber;
+use Doctrine\Bundle\DoctrineBundle\Attribute\AsDoctrineListener;
 use Doctrine\ORM\Event\PrePersistEventArgs;
+use Doctrine\ORM\Event\PreUpdateEventArgs;
 use Doctrine\ORM\Events;
-use EightMarq\UserBundle\Entity\User;
-use EightMarq\UserBundle\Security\PasswordUpdaterInterface;
+use Schvoy\UserBundle\Entity\User;
+use Schvoy\UserBundle\Security\PasswordUpdaterInterface;
 
-class PasswordHashingDoctrineEventSubscriber implements EventSubscriber
+#[AsDoctrineListener(event: Events::prePersist)]
+#[AsDoctrineListener(event: Events::preUpdate)]
+class PasswordHashingDoctrineEventSubscriber
 {
     private static $enabled = true;
 
@@ -19,19 +22,21 @@ class PasswordHashingDoctrineEventSubscriber implements EventSubscriber
         self::$enabled = $enabled;
     }
 
-    public function __construct(
-        private readonly PasswordUpdaterInterface $passwordUpdater
-    ) {
-    }
-
-    public function getSubscribedEvents(): array
+    public function __construct(private readonly PasswordUpdaterInterface $passwordUpdater)
     {
-        return [
-            Events::prePersist,
-        ];
     }
 
     public function prePersist(PrePersistEventArgs $args): void
+    {
+        $this->handlePasswordHashing($args);
+    }
+
+    public function preUpdate(PreUpdateEventArgs $args): void
+    {
+        $this->handlePasswordHashing($args);
+    }
+
+    private function handlePasswordHashing(PreUpdateEventArgs|PrePersistEventArgs $args): void
     {
         $entity = $args->getObject();
 

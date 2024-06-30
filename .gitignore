@@ -1,4 +1,6 @@
-# Vendor files
 /.idea
+.phpunit.cache
 /vendor
 composer.lock
+.php-cs-fixer.cache
+/var

@@ -1,26 +1,17 @@
 <?php
 
-/**
- * This file is part of the EightMarq Symfony bundles.
- *
- * (c) Norbert Schvoy <norbert.schvoy@eightmarq.com>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
 declare(strict_types=1);
 
-namespace EightMarq\UserBundle\Entity;
+namespace Schvoy\UserBundle\Entity;
 
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
-use EightMarq\CoreBundle\Entity\BaseEntity;
+use Schvoy\BaseEntityBundle\Entity\IdBasedEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\MappedSuperclass]
-class User extends BaseEntity implements UserInterface, PasswordAuthenticatedUserInterface
+class User extends IdBasedEntity implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Column(type: Types::STRING, length: 180, unique: true)]
     protected string $email;
@@ -98,7 +89,7 @@ class User extends BaseEntity implements UserInterface, PasswordAuthenticatedUse
     /**
      * @see UserInterface
      */
-    public function eraseCredentials()
+    public function eraseCredentials(): void
     {
 
     }

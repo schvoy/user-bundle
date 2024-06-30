@@ -1,23 +1,14 @@
 <?php
 
-/**
- * This file is part of the EightMarq Symfony bundles.
- *
- * (c) Norbert Schvoy <norbert.schvoy@eightmarq.com>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
 declare(strict_types=1);
 
-namespace EightMarq\UserBundle\Repository;
+namespace Schvoy\UserBundle\Repository;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Exception\ORMException;
 use Doctrine\ORM\OptimisticLockException;
-use Doctrine\ORM\ORMException;
 use Doctrine\Persistence\ManagerRegistry;
-use EightMarq\UserBundle\Entity\User;
+use Schvoy\UserBundle\Entity\User;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\PasswordUpgraderInterface;
@@ -42,13 +33,13 @@ abstract class UserRepository extends ServiceEntityRepository implements Passwor
      * @throws ORMException
      * @throws OptimisticLockException
      */
-    public function upgradePassword(PasswordAuthenticatedUserInterface $user, string $newEncodedPassword): void
+    public function upgradePassword(PasswordAuthenticatedUserInterface $user, string $newHashedPassword): void
     {
         if (!$user instanceof UserInterface) {
             throw new UnsupportedUserException(sprintf('Instances of "%s" are not supported.', get_class($user)));
         }
 
-        $user->setPassword($newEncodedPassword);
+        $user->setPassword($newHashedPassword);
 
         $this->_em->persist($user);
         $this->_em->flush();

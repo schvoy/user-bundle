@@ -1,9 +1,21 @@
 # Changelog
 
+## 1.0.0
+
+* Move repository from eightmarq/user-bundle to schvoy/user-bundle
+* Bump composer packages, increase minimum versions (php to 8.3, Symfony to 7.1)
+* Replace eightmarq/core-bundle with schvoy/base-entity-bundle
+* Update code because of package bumps
+* Add test environment for PhpUnit tests
+* Add PhpUnit tests
+* Add `before-commit`, `code-quality` and `tests` composer scripts
+* Update README.md
+* Extend `Schvoy\UserBundle\EventSubscriber\PasswordHashingDoctrineEventSubscriber` to hash passwords during update
+
 ## 0.9.0
 
 * Change composer.json requirements
-* Add new `EightMarq\UserBundle\EventSubscriber\PasswordHashingDoctrineEventSubscriber`
+* Add new `Schvoy\UserBundle\EventSubscriber\PasswordHashingDoctrineEventSubscriber`
 * Remove unnecessary type cast from User entity
 
 ## 0.8.3
@@ -42,14 +54,14 @@
 
 ### Change
 
-* Modify `EightMarq\UserBundle\Entity\User` entity to a MappedSuperclass
-* Modify `EightMarq\UserBundle\Repository\UserRepository` to be more general
-* Remove `EightMarq\UserBundle\Entity\User` entity from Doctrine interface definition
+* Modify `Schvoy\UserBundle\Entity\User` entity to a MappedSuperclass
+* Modify `Schvoy\UserBundle\Repository\UserRepository` to be more general
+* Remove `Schvoy\UserBundle\Entity\User` entity from Doctrine interface definition
 
 ## 0.5.0
 
 ### Added
 
-* Added `EightMarq\UserBundle\Entity\User` entity
-* Added `EightMarq\UserBundle\Repository\UserRepository` repository
-* Added `EightMarq\UserBundle\Security\PasswordUpdater`
+* Added `Schvoy\UserBundle\Entity\User` entity
+* Added `Schvoy\UserBundle\Repository\UserRepository` repository
+* Added `Schvoy\UserBundle\Security\PasswordUpdater`

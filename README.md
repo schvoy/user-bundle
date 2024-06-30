@@ -1,13 +1,14 @@
-# EightMarq - User bundle
+# User bundle
 
 This bundle provides a basic user entity and user repository,
-that can be used immediately without so much effort, just a few small steps needed to use it.
+that can be used immediately without too much effort, just a few small steps needed to use it.
+
 However, these are extendable and you can add additional properties easily.
 
 ## Installation
 
 ```bash
-composer require eightmarq/user-bundle
+composer require schvoy/user-bundle
 ```
 
 ## Usage
@@ -23,7 +24,7 @@ namespace App\Repository;
 
 use App\Entity\User;
 use Doctrine\Persistence\ManagerRegistry;
-use EightMarq\UserBundle\Repository\UserRepository as BaseUserRepository;
+use Schvoy\UserBundle\Repository\UserRepository as BaseUserRepository;
 
 class UserRepository extends BaseUserRepository
 {
@@ -46,7 +47,7 @@ namespace App\Entity;
 
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
-use EightMarq\UserBundle\Entity\User as BaseUser;
+use Schvoy\UserBundle\Entity\User as BaseUser;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: 'users')]
@@ -74,7 +75,7 @@ security:
 
 ## Event subscriber
 
-The `EightMarq\UserBundle\EventSubscriber\PasswordHashingDoctrineEventSubscriber` automatically hashes the plain password, when during a new user entity creation.
+The `Schvoy\UserBundle\EventSubscriber\PasswordHashingDoctrineEventSubscriber` automatically hashes the plain password, during a new user entity creation or an update (if the password changed).
 
 In some cases, you don't need this behavior, so you can disable it with the following code:
 
@@ -90,4 +91,4 @@ And after that you can re-enable it:
 
 ## Configuration reference
 
-No configuration
+Extra configuration is not needed for this bundle.

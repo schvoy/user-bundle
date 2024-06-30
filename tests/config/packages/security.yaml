@@ -1,0 +1,22 @@
+security:
+    password_hashers:
+        Schvoy\UserBundle\Tests\Fixtures\Entity\User:
+            algorithm: 'bcrypt'
+            cost: 13
+
+    providers:
+        app_user_provider:
+            entity:
+                class: Schvoy\UserBundle\Tests\Fixtures\Entity\User
+                property: email
+
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        main:
+            lazy: true
+            provider: app_user_provider
+            form_login:
+                login_path: app_login
+                check_path: app_login

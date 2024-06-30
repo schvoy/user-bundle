@@ -1,17 +1,8 @@
 <?php
 
-/**
- * This file is part of the EightMarq Symfony bundles.
- *
- * (c) Norbert Schvoy <norbert.schvoy@eightmarq.com>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
 declare(strict_types=1);
 
-namespace EightMarq\UserBundle\Security;
+namespace Schvoy\UserBundle\Security;
 
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
@@ -35,6 +26,10 @@ class PasswordUpdater implements PasswordUpdaterInterface
 
         if (!$user instanceof PasswordAuthenticatedUserInterface) {
             throw new UnsupportedUserException(sprintf('Instances of "%s" are not supported.', get_class($user)));
+        }
+
+        if (false === $this->userPasswordHasher->needsRehash($user)) {
+            return;
         }
 
         $password = $this->userPasswordHasher->hashPassword($user, $plainPassword);

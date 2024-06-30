@@ -1,0 +1,18 @@
+doctrine:
+    dbal:
+        dbname: '%env(DB_NAME)%'
+        host: '%env(DB_HOST)%'
+        user: '%env(DB_USER)%'
+        password: '%env(DB_PASSWD)%'
+        driver: '%env(DB_ENGINE)%'
+        memory: '%env(bool:DB_MEMORY)%'
+    orm:
+        auto_mapping: true
+        resolve_target_entities:
+            Symfony\Component\Security\Core\User\UserInterface: Schvoy\UserBundle\Tests\Fixtures\Entity\User
+        mappings:
+            UserBundle:
+                is_bundle: true
+                type: attribute
+                dir: '../tests/Fixtures/Entity'
+                prefix: 'Schvoy\UserBundle\Tests\Fixtures\Entity\'

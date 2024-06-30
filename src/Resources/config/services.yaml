@@ -1,13 +1,13 @@
 services:
 
-    EightMarq\UserBundle\Repository\UserRepository:
+    Schvoy\UserBundle\Repository\UserRepository:
         autowire: true
         autoconfigure: true
 
-    EightMarq\UserBundle\Security\PasswordUpdater:
+    Schvoy\UserBundle\Security\PasswordUpdater:
         autowire: true
 
-    EightMarq\UserBundle\Security\PasswordUpdaterInterface: '@EightMarq\UserBundle\Security\PasswordUpdater'
+    Schvoy\UserBundle\Security\PasswordUpdaterInterface: '@Schvoy\UserBundle\Security\PasswordUpdater'
 
-    EightMarq\UserBundle\EventSubscriber\PasswordHashingDoctrineEventSubscriber:
+    Schvoy\UserBundle\EventSubscriber\PasswordHashingDoctrineEventSubscriber:
         tags: [ 'doctrine.event_subscriber' ]

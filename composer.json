@@ -1,8 +1,7 @@
 {
-    "name": "eightmarq/user-bundle",
-    "description": "EightMarq user bundle - This bundle provides a basic user entity and user repository.",
+    "name": "schvoy/user-bundle",
+    "description": "User bundle - This bundle provides a basic user entity and user repository.",
     "type": "symfony-bundle",
-    "minimum-stability": "dev",
     "license": "MIT",
     "authors": [
         {
@@ -12,19 +11,35 @@
     ],
     "autoload": {
         "psr-4": {
-            "EightMarq\\UserBundle\\": "src/"
+            "Schvoy\\UserBundle\\": "src/"
         }
     },
     "autoload-dev": {
-        "psr-4": { "EightMarq\\UserBundle\\Tests\\": "tests/" }
+        "psr-4": { "Schvoy\\UserBundle\\Tests\\": "tests/" }
     },
     "require": {
-        "php": ">=8.1",
-        "symfony/framework-bundle": "^6.4|^7.0",
+        "php": ">=8.3",
+        "symfony/framework-bundle": "^7.1",
         "symfony/orm-pack": "*",
-        "eightmarq/core-bundle": "^0.9"
+        "schvoy/base-entity-bundle": "^1.0.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^9.5"
+        "phpunit/phpunit": "^11.1",
+        "friendsofphp/php-cs-fixer": "^3.58",
+        "symfony/yaml": "^7.1"
+    },
+    "scripts": {
+        "before-commit": [
+            "vendor/bin/php-cs-fixer fix src",
+            "vendor/bin/php-cs-fixer fix tests",
+            "vendor/bin/phpunit"
+        ],
+        "code-quality": [
+            "vendor/bin/php-cs-fixer fix --dry-run src",
+            "vendor/bin/php-cs-fixer fix --dry-run tests"
+        ],
+        "tests": [
+            "vendor/bin/phpunit"
+        ]
     }
 }

@@ -1,0 +1,36 @@
+#         tags: [ 'doctrine.event_subscriber' ]
+parameters:
+    env(DB_ENGINE): 'pdo_sqlite'
+    env(DB_HOST): 'localhost'
+    env(DB_NAME): 'core_test'
+    env(DB_USER): 'root'
+    env(DB_PASSWD): ''
+    env(DB_MEMORY): 'true'
+    kernel.secret: 'test_secret'
+    locale: 'en'
+
+services:
+    _defaults:
+        public: true
+        autowire: true
+        autoconfigure: true
+
+    'symfony.context':
+        public: true
+        alias: Symfony\Bundle\SecurityBundle\Security
+
+    Schvoy\UserBundle\Tests\Services\:
+        resource: '../Services/'
+
+    ## Copy of src/Resources/config/services.yaml
+
+    Schvoy\UserBundle\Repository\UserRepository:
+        autowire: true
+        autoconfigure: true
+
+    Schvoy\UserBundle\Security\PasswordUpdater:
+        autowire: true
+
+    Schvoy\UserBundle\Security\PasswordUpdaterInterface: '@Schvoy\UserBundle\Security\PasswordUpdater'
+
+    Schvoy\UserBundle\EventSubscriber\PasswordHashingDoctrineEventSubscriber:
