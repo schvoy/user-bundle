@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.1
+
+* Add missing return type to UserExtension.php
+* Improve AbstractTestCase
+
 ## 1.0.0
 
 * Move repository from eightmarq/user-bundle to schvoy/user-bundle

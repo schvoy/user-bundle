@@ -6,9 +6,9 @@ namespace Schvoy\UserBundle\Tests;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityRepository;
+use PHPUnit\Framework\Attributes\CoversNothing;
 use Schvoy\UserBundle\Tests\Fixtures\Entity\User;
 use Schvoy\UserBundle\Tests\Services\DatabaseManager;
-use PHPUnit\Framework\Attributes\CoversNothing;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -36,7 +36,9 @@ abstract class AbstractTestCase extends KernelTestCase
         $this->container = static::getContainer();
 
         $this->entityManager = $this->container->get('doctrine.orm.entity_manager');
-        $this->repository = $this->entityManager->getRepository($this->getEntityClass());
+        if (false !== $this->getEntityClass()) {
+            $this->repository = $this->entityManager->getRepository($this->getEntityClass());
+        }
         $this->security = $this->container->get('symfony.context');
 
         /** @var DatabaseManager $databaseLoader */
@@ -84,5 +86,5 @@ abstract class AbstractTestCase extends KernelTestCase
         $requestStack->push($request);
     }
 
-    abstract protected function getEntityClass(): string;
+    abstract protected function getEntityClass(): string|bool;
 }
