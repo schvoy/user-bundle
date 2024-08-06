@@ -28,9 +28,6 @@ use Schvoy\UserBundle\Repository\UserRepository as BaseUserRepository;
 
 class UserRepository extends BaseUserRepository
 {
-    /**
-     * @param ManagerRegistry $registry
-     */
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, User::class);
