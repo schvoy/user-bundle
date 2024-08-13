@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.2
+
+* Improve the README.md
+* Fix how we reach the Entity Manager from UserRepository 
+
 ## 1.0.1
 
 * Add missing return type to UserExtension.php

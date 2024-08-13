@@ -41,7 +41,7 @@ abstract class UserRepository extends ServiceEntityRepository implements Passwor
 
         $user->setPassword($newHashedPassword);
 
-        $this->_em->persist($user);
-        $this->_em->flush();
+        $this->getEntityManager()->persist($user);
+        $this->getEntityManager()->flush();
     }
 }

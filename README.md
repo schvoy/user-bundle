@@ -70,6 +70,16 @@ security:
     [...]
 ```
 
+### doctrine.yaml
+
+```yaml
+doctrine:
+    orm:
+        resolve_target_entities:
+            Symfony\Component\Security\Core\User\UserInterface: <your-fqcdn-for-your-user-entity-class>
+    [...]
+```
+
 ## Event subscriber
 
 The `Schvoy\UserBundle\EventSubscriber\PasswordHashingDoctrineEventSubscriber` automatically hashes the plain password, during a new user entity creation or an update (if the password changed).
@@ -88,4 +98,4 @@ And after that you can re-enable it:
 
 ## Configuration reference
 
-Extra configuration is not needed for this bundle.
+Extra configuration is not allowed yet for this bundle.
