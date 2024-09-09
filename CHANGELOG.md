@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.3
+
+* Fix PasswordUpdater if password is null 
+* Sync User::password property with PasswordAuthenticatedUserInterface
+
 ## 1.0.2
 
 * Improve the README.md

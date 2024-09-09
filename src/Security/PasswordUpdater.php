@@ -28,7 +28,10 @@ class PasswordUpdater implements PasswordUpdaterInterface
             throw new UnsupportedUserException(sprintf('Instances of "%s" are not supported.', get_class($user)));
         }
 
-        if (false === $this->userPasswordHasher->needsRehash($user)) {
+        if (
+            null !== $user->getPassword()
+            && false === $this->userPasswordHasher->needsRehash($user)
+        ) {
             return;
         }
 

@@ -20,7 +20,7 @@ class User extends IdBasedEntity implements UserInterface, PasswordAuthenticated
     protected array $roles = [];
 
     #[ORM\Column(type: Types::STRING)]
-    protected string $password;
+    protected ?string $password = null;
 
     public function __toString()
     {
@@ -68,7 +68,7 @@ class User extends IdBasedEntity implements UserInterface, PasswordAuthenticated
     /**
      * @see UserInterface
      */
-    public function getPassword(): string
+    public function getPassword(): ?string
     {
         return $this->password;
     }
