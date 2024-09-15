@@ -21,16 +21,3 @@ services:
 
     Schvoy\UserBundle\Tests\Services\:
         resource: '../Services/'
-
-    ## Copy of src/Resources/config/services.yaml
-
-    Schvoy\UserBundle\Repository\UserRepository:
-        autowire: true
-        autoconfigure: true
-
-    Schvoy\UserBundle\Security\PasswordUpdater:
-        autowire: true
-
-    Schvoy\UserBundle\Security\PasswordUpdaterInterface: '@Schvoy\UserBundle\Security\PasswordUpdater'
-
-    Schvoy\UserBundle\EventSubscriber\PasswordHashingDoctrineEventSubscriber:

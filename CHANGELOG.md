@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.4
+
+* Fix to allow auto configuration for PasswordHashingDoctrineEventSubscriber
+
 ## 1.0.3
 
 * Fix PasswordUpdater if password is null 

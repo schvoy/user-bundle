@@ -10,4 +10,6 @@ services:
     Schvoy\UserBundle\Security\PasswordUpdaterInterface: '@Schvoy\UserBundle\Security\PasswordUpdater'
 
     Schvoy\UserBundle\EventSubscriber\PasswordHashingDoctrineEventSubscriber:
+        autoconfigure: true
+        autowire: true
         tags: [ 'doctrine.event_subscriber' ]
