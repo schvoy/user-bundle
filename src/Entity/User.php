@@ -16,7 +16,7 @@ class User extends IdBasedEntity implements UserInterface, PasswordAuthenticated
     #[ORM\Column(type: Types::STRING, length: 180, unique: true)]
     protected string $email;
 
-    #[ORM\Column(type: Types::JSON)]
+    #[ORM\Column(type: Types::JSON, options: ['jsonb' => true])]
     protected array $roles = [];
 
     #[ORM\Column(type: Types::STRING)]

@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.5
+
+* Add 'jsonb' option for User::$roles attribute to allow use jsonb functions in PostgreSQL 
+
 ## 1.0.4
 
 * Fix to allow auto configuration for PasswordHashingDoctrineEventSubscriber
