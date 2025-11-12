@@ -20,7 +20,9 @@
     "require": {
         "php": ">=8.3",
         "symfony/framework-bundle": "^7.1",
-        "symfony/orm-pack": "*",
+        "doctrine/dbal": "^3",
+        "doctrine/orm": "^3.2",
+        "doctrine/doctrine-bundle": "^2.12",
         "schvoy/base-entity-bundle": "^1.0.0"
     },
     "require-dev": {
