@@ -20,7 +20,7 @@ class PasswordUpdater implements PasswordUpdaterInterface
 
     public function hashPassword(UserInterface $user, string $plainPassword): void
     {
-        if (strlen($plainPassword) === 0) {
+        if (0 === strlen($plainPassword)) {
             return;
         }
 

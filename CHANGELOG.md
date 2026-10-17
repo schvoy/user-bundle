@@ -4,6 +4,8 @@
 
 * Increase PHP minimum level to PHP 8.4
 * Increase Symfony minimum level to Symfony 7.4
+* Add symfony/var-exporter to dependency
+* Add php-cs-fixer config
 
 ## 1.1.0
 
