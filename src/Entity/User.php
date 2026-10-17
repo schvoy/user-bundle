@@ -27,6 +27,14 @@ class User extends IdBasedEntity implements UserInterface, PasswordAuthenticated
         return $this->getEmail();
     }
 
+    public function __serialize(): array
+    {
+        $data = (array) $this;
+        $data["\0".self::class."\0password"] = hash('crc32c', $this->password);
+
+        return $data;
+    }
+
     public function getEmail(): string
     {
         return $this->email;
@@ -76,22 +84,6 @@ class User extends IdBasedEntity implements UserInterface, PasswordAuthenticated
     public function setPassword(string $password): void
     {
         $this->password = $password;
-    }
-
-    /**
-     * @see UserInterface
-     */
-    public function getSalt()
-    {
-
-    }
-
-    /**
-     * @see UserInterface
-     */
-    public function eraseCredentials(): void
-    {
-
     }
 
     /**

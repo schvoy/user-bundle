@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.2.0
+
+* Increase PHP minimum level to PHP 8.4
+* Increase Symfony minimum level to Symfony 7.4
+
 ## 1.1.0
 
 * Replace symfony/orm-pack requirements with exact Doctrine packages  
