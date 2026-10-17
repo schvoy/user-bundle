@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Schvoy\UserBundle\Tests\Integration;
 
+use Override;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use Schvoy\UserBundle\EventSubscriber\PasswordHashingDoctrineEventSubscriber;
 use Schvoy\UserBundle\Tests\AbstractTestCase;
@@ -97,7 +98,7 @@ class UserEntityTest extends AbstractTestCase
         PasswordHashingDoctrineEventSubscriber::setEnabled(true);
     }
 
-    #[\Override]
+    #[Override]
     protected function getEntityClass(): string|bool
     {
         return User::class;

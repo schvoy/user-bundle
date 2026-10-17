@@ -14,7 +14,9 @@ return new Config()
         '@PER-CS' => true,
         '@PhpCsFixer' => true,
         '@Symfony' => true,
-        'nullable_type_declaration' => ['syntax' => 'union']
+        'global_namespace_import' => ['import_classes' => true, 'import_constants' => true, 'import_functions' => true],
+        'nullable_type_declaration' => ['syntax' => 'union'],
+        'multiline_whitespace_before_semicolons' => ['strategy' => 'no_multi_line'],
     ])
     // 💡 by default, Fixer looks for `*.php` files excluding `./vendor/` - here, you can groom this config
     ->setFinder(
