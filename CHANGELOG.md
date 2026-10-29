@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.3.0
+
+* Drop Symfony 7.4 support
+* Bump doctrine packages
+* Remove deprecations
+
 ## 1.2.1
 
 * Allow Symfony 8.0+ in composer
