@@ -42,7 +42,7 @@ class User extends IdBasedEntity implements UserInterface, PasswordAuthenticated
 
     public function setEmail(string $email): void
     {
-        $this->email = $email;
+        $this->email = mb_strtolower(trim($email));
     }
 
     /**
